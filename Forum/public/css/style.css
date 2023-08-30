@@ -1,0 +1,184 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* *******************************BODY******************************************** */
+.container {
+    width: 100%;
+}
+
+.nav {
+    background: linear-gradient(350deg, #883ba3, #735bf3);
+    background-size: 400% 400%;
+    animation: Gradient 6s ease infinite;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    width: 100%;
+    height: 80px;
+}
+.nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav ul li{
+    display: inline;
+}
+
+.imgFigureNav {
+    width: 10%;
+    margin-left: 2%;
+}
+
+.nav ul {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hoverNav {
+    position: relative;
+}
+
+.inscription_connexion{
+    width: 30%;
+    text-align: right;
+    margin-right: 2%;
+}
+
+.burger {
+    display: none;
+    width: 42px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+    margin-right: 3%;
+}
+
+.burger span {
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+    transition: background-color 0.5s ease-in-out;
+}
+
+
+@keyframes Gradient {
+    0%{background-position:44% 0%}
+    50%{background-position:57% 100%}
+    100%{background-position:44% 0%}
+}
+
+.burger span::before, .burger span::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    border-radius: 10px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.burger span::before {
+    transform: translateY(-10px);
+}
+
+.burger span::after {
+    transform: translateY(10px);
+}
+
+.burger.active span{
+    background-color: transparent;
+}
+
+.burger.active span::before{
+    transform: translateY(0px) rotateZ(45deg);
+}
+
+.burger.burger.active span::after {
+    transform: translateY(0px) rotateZ(-45deg);
+}
+
+.hoverNav::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.175rem;
+    left: 0;
+    bottom: -10px;
+    background: white;
+    border-radius: 10px;
+    transform: scale(0, 1);
+    transition: transform 0.3s ease;
+}
+
+.hoverNav:hover::after {
+    transform: scale(1, 1);
+}
+/* *********************************MEDIA********************************************************* */
+@media (max-width: 700px) {
+    .nav{
+        height: 80px;
+    }
+    .burger {
+        display: block;
+    }
+
+    .nav ul, .inscription_connexion{
+        flex-direction: column;
+        width: 100%;
+        position: fixed;
+        left: -100%;
+        padding: 10px;
+        top: 5%;
+        transition: 0.5s;
+    }
+
+    .nav li {
+        margin-bottom: 10px;
+    }
+    
+    .nav.active{
+        height: 250px;
+    }
+
+    .inscription_connexion {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 170px;
+        text-align: center;
+        z-index: 5;
+    }
+
+    .inscription_connexion.active {
+        left: 0;
+    }
+
+    .speration{
+        display: none;
+    }
+
+    nav.active ul{
+        left: 0;
+    }
+    .nav a {
+        margin-top: 5px;
+    }
+}
+@media screen and (min-width: 710px)and (max-width: 1080px){
+    .nav {
+        font-size: 15px;
+    }
+}
