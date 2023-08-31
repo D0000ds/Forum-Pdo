@@ -9,6 +9,6 @@ $categories = $result["data"]['categories'];
 foreach($categories as $categorie ){
 
     ?>
-    <a href="index.php?ctrl=forum&action=TopicByCategorie&id=<?=$categorie->getId()?>"><?=$categorie->getLibelle()?></a>
+    <a href="index.php?ctrl=forum&action=TopicByCategorie&id=<?=$categorie->getId()?>"><?=$categorie->getLibelle()?><br></a>
     <?php
 }
