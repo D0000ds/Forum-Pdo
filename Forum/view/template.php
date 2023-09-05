@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="./public/css/style.css">
     <title>Forum</title>
 </head>
 <body>
@@ -11,15 +11,15 @@
         <header>
             <nav class="nav">
                 <figure class="imgFigureNav">
-                    <a href="">
-                        <img src="../public/img/forum.png" alt="Logo Forum">
+                    <a href="./index.php">
+                        <img src="./public/img/forum.png" alt="Logo Forum">
                     </a>
                 </figure>
                 <ul class="ul">
-                    <div class="hoverNav"><li><a href="">Catégorie</a></li></div>
-                    <div class="hoverNav"><li><a href="">Dernier Topics</a></li></div>
+                    <div class="hoverNav"><li><a href="index.php?ctrl=forum&action=listCategorie">Catégorie</a></li></div>
+                    <div class="hoverNav"><li><a href="index.php?ctrl=forum&action=index">Dernier Topics</a></li></div>
                     <div class="hoverNav"><li><a href="">Dernier Messages</a></li></div>
-                    <div class="hoverNav"><li><a href="">Règlement</a></li></div>
+                    <div class="hoverNav"><li><a href="index.php?ctrl=home&action=reglement">Règlement</a></li></div>
                 </ul>
                 <div class="inscription_connexion">
                     <a class="hoverNav" href="">Inscription</a>
@@ -32,12 +32,11 @@
             </nav>
         </header>
         <main>
-            
+            <?= $content ?>
         </main>
         <footer class="nav">
-
         </footer>
     </div>
-    <script src="..\public\js\script.js"></script>
+    <script src=".\public\js\script.js"></script>
 </body>
 </html>

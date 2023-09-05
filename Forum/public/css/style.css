@@ -1,7 +1,13 @@
+@font-face {
+    font-family: 'Oswald-VariableFont_wght';
+    src: url("../font/Oswald-VariableFont_wght.ttf");
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Oswald-VariableFont_wght', sans-serif;
 }
 
 /* *******************************BODY******************************************** */
@@ -21,6 +27,10 @@
     width: 100%;
     height: 80px;
 }
+footer {
+    position: absolute;
+    bottom: 0;
+}
 .nav a {
     text-decoration: none;
     color: white;
@@ -28,6 +38,7 @@
 
 .nav ul li{
     display: inline;
+    text-shadow: 2px 2px 9px rgba(0,0,0,0.73);
 }
 
 .imgFigureNav {
@@ -50,6 +61,7 @@
     width: 30%;
     text-align: right;
     margin-right: 2%;
+    text-shadow: 2px 2px 9px rgba(0,0,0,0.73);
 }
 
 .burger {
@@ -73,6 +85,153 @@
     transition: background-color 0.5s ease-in-out;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.bienvenue {
+    width: 40%;
+    
+}
+.bienvenue h1{
+    text-align: center;
+    font-size: 80px;
+}
+.bienvenue a, p{
+    font-size: 20px;
+}
+
+.blob-home {
+    width: 60%;
+}
+
+.container-home{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 60%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    margin-top: 5%;
+    border-radius: 10px;
+}
+
+.card-title{
+    background: linear-gradient(350deg, #883ba3, #735bf3);
+    animation: Gradient 6s ease infinite;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+    text-shadow: 2px 2px 9px rgba(0,0,0,0.73);
+}
+
+.card-title h1{
+    margin-left: 10px;
+}
+
+.card p {
+    margin: 3%;
+}
+
+.categorie {
+    display: flex;
+    height: 80px;
+    margin: 3%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+}
+
+.categorie-title {
+    margin-left: 1%;
+    width: 55%;
+}
+
+.categorie-lien{
+    text-decoration: none;
+    color: black;
+}
+
+.categorie-nb-topics{
+    text-align: center;
+    width: 19%;
+    border-left: 2px solid;
+    border-image: linear-gradient(350deg,  #883ba3, #735bf3);
+    animation: Gradient 6s ease infinite;
+    border-image-slice: 1;
+}
+
+.categorie-img{
+    width: 200px;
+    background-size: cover;
+    object-fit: cover;
+    height: 80px;
+    border-radius: 10px 50px 50px 10px;
+}
+
+.categorie-span {
+    margin-top: 10%;
+}
+
+.categorie-auteur{
+    margin-top: 10%;
+}
+
+.topic-auteur{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 4px solid;
+    border-image: linear-gradient(350deg,  #883ba3, #735bf3);
+    animation: Gradient 6s ease infinite;
+    border-image-slice: 1;
+    width: 90%;
+    min-height: 100%;
+    padding-top: 2%;
+}
+
+.topic-auteur img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+
+.container-topic{
+    margin-top: 2%;
+    width: 80%;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+}
+
+.topic-detail{
+    width: 90%;
+}
+
+.topic-like-post {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topic-like-post-figure {
+    display: flex;
+    align-items: center;
+}
+
+.topic-like-post-figure img{
+    background: linear-gradient(350deg, #883ba3, #735bf3);
+    background-size: 400% 400%;
+    animation: Gradient 6s ease infinite;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
 
 @keyframes Gradient {
     0%{background-position:44% 0%}
@@ -131,26 +290,31 @@
     .nav{
         height: 80px;
     }
+
+    .imgFigureNav {
+        position: absolute;
+        top: 10px;
+    }
+
     .burger {
         display: block;
+        position: absolute;
+        top: 25px;
+        right: 0;
     }
 
     .nav ul, .inscription_connexion{
         flex-direction: column;
         width: 100%;
-        position: fixed;
+        position: absolute;
         left: -100%;
         padding: 10px;
         top: 5%;
-        transition: 0.5s;
-    }
-
-    .nav li {
-        margin-bottom: 10px;
+        transition: 0.25s;
     }
     
     .nav.active{
-        height: 250px;
+        height: 300px;
     }
 
     .inscription_connexion {
@@ -160,10 +324,14 @@
         top: 170px;
         text-align: center;
         z-index: 5;
+
     }
 
     .inscription_connexion.active {
         left: 0;
+        margin-top: 5%;
+        display: grid;
+        justify-content: center;
     }
 
     .speration{
@@ -176,9 +344,62 @@
     .nav a {
         margin-top: 5px;
     }
+    .categorie{
+        height: 250px;
+        flex-wrap: wrap;
+    }
+    .categorie-nb-topics{
+        width: 100%;
+        border-left: 0;
+        border-top: 2px solid;
+        border-image: linear-gradient(350deg,  #883ba3, #735bf3);
+        animation: Gradient 6s ease infinite;
+        border-image-slice: 1;
+    }
+    .categorie-img{
+        width: 100%;
+        border-radius: 10px 10px 0px 0px;
+    }
+    .categorie-title{
+        width: 100%;
+        text-align: center;
+    }
+    .categorie-span {
+        margin-top: 5%;
+    }
+    .categorie-auteur{
+        margin-top: 5%;
+    }
 }
-@media screen and (min-width: 710px)and (max-width: 1080px){
+@media screen and (min-width: 701px)and (max-width: 1080px){
     .nav {
         font-size: 15px;
     }
+    .categorie{
+        height: 175px;
+        flex-wrap: wrap;
+    }
+    .categorie-nb-topics{
+        width: 100%;
+        border-left: 0;
+        border-top: 2px solid;
+        border-image: linear-gradient(350deg,  #883ba3, #735bf3);
+        animation: Gradient 6s ease infinite;
+        border-image-slice: 1;
+    }
+    .categorie-title{
+        width: 35%;
+    }
+
+    .categorie-img{
+        border-radius: 10px 50px 50px 0px;
+    }
+    .categorie-span {
+        margin-top: 5%;
+    }
+
+    .categorie-auteur{
+        margin-top: 0;
+    }
+
 }

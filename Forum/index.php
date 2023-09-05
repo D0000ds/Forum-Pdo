@@ -7,6 +7,8 @@ define('VIEW_DIR', BASE_DIR."view/");
 define('PUBLIC_DIR', "/public");
 define('DEFAULT_CTRL', 'Home');
 
+require("app/Autoloader.php");
+
 Autoloader::register();
 
 session_start();
@@ -51,9 +53,9 @@ else{
     /*la vue s'insère dans le buffer qui devra être vidé au milieu du layout*/
     include($result['view']);
     /*je mets cet affichage dans une variable*/
-    $page = ob_get_contents();
+    $content = ob_get_contents();
     /*j'efface le tampon*/
     ob_end_clean();
     /*j'affiche le template principal (layout)*/
-    include VIEW_DIR."layout.php";
+    include VIEW_DIR."template.php";
 }
