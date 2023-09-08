@@ -2,7 +2,6 @@
 $topic = $result["data"]['topic'];
 $messages = $result["data"]['messages'];
 
-
 ?>
 <div class="container-topic">
     <a href="index.php?ctrl=forum&action=detailUser&id=<?= $topic->getUser()->getId(); ?>" class="categorie-lien">
@@ -17,8 +16,10 @@ $messages = $result["data"]['messages'];
         <p><?= $topic->getDescription(); ?></p>
         <div class="topic-like-post">
             <figure class="topic-like-post-figure">
-                <img src="./public/img/like.png" alt="like">
-                <span>0</span>
+                <a href=""><img src="./public/img/like.png" alt="like"></a>
+                <span><?php if($topic->getLikes() == NULL){
+                    echo"0";
+                }else echo $topic->getLikes(); ?></span>
             </figure>
             <span>Posté le <?= $topic->getCreationdate(); ?></span>
         </div>

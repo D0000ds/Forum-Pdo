@@ -39,7 +39,20 @@
                 DAO::select($sql), 
                 $this->className
                 );
-            
+        }
 
+        public function like($id){
+            $sql = "UPDATE ".$this->tableName." 
+            SET likes = likes + 1
+            WHERE id_".$this->tableName." = :id;
+            ";
+
+            try{
+                return DAO::update($sql, ['id' => $id]);
+            }
+            catch(\PDOException $e){
+                echo $e->getMessage();
+                die();
+            }
         }
     }

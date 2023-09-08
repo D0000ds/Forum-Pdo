@@ -64,7 +64,8 @@
                 "view" => VIEW_DIR."forum/detailTopic.php",
                 "data" => [
                     "topic" => $topicManager->detailTopic($id),
-                    "messages" => $messagesManager->AllMsg($id)
+                    "messages" => $messagesManager->AllMsg($id),
+                    "likes" => $topicManager->like($id)
                 ]
             ];
         }

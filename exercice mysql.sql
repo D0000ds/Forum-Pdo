@@ -14,6 +14,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Listage de la structure de la base pour forum
+CREATE DATABASE IF NOT EXISTS `forum` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `forum`;
+
 -- Listage de la structure de table forum. categorie
 CREATE TABLE IF NOT EXISTS `categorie` (
   `id_categorie` int NOT NULL AUTO_INCREMENT,
@@ -23,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   PRIMARY KEY (`id_categorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table forum.categorie : ~2 rows (environ)
-INSERT IGNORE INTO `categorie` (`id_categorie`, `libelle`, `picture`, `description`) VALUES
+-- Listage des données de la table forum.categorie : ~4 rows (environ)
+INSERT INTO `categorie` (`id_categorie`, `libelle`, `picture`, `description`) VALUES
 	(1, 'Football', 'football.webp', 'Le meilleur sport de tout les temps'),
 	(2, 'Mma', 'mma.jpg', 'ca va cogner'),
 	(3, 'Basketball', 'basketball.jpg', 'Boing boing boing'),
@@ -46,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table forum.messages : ~2 rows (environ)
-INSERT IGNORE INTO `messages` (`id_messages`, `texte`, `datePublication`, `jaime`, `topic_id`, `user_id`) VALUES
+INSERT INTO `messages` (`id_messages`, `texte`, `datePublication`, `jaime`, `topic_id`, `user_id`) VALUES
 	(1, 'Messi c\'est évident', '2023-08-30 08:48:33', NULL, 1, 2),
 	(2, 'Halland', '2023-08-30 14:39:35', NULL, 1, 2);
 
@@ -56,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `creationdate` datetime DEFAULT NULL,
   `closed` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `jaime` int DEFAULT NULL,
+  `likes` int DEFAULT NULL,
   `categorie_id` int NOT NULL,
   `user_id` int NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
@@ -67,11 +72,11 @@ CREATE TABLE IF NOT EXISTS `topic` (
   CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table forum.topic : ~3 rows (environ)
-INSERT IGNORE INTO `topic` (`id_topic`, `title`, `creationdate`, `closed`, `jaime`, `categorie_id`, `user_id`, `description`) VALUES
-	(1, 'Qui sera le futur BO?', '2023-08-30 08:47:05', 'ouvert', NULL, 1, 1, 'Qui va gagner le Ballon d\'or a votre avis ??'),
-	(2, 'Ronaldo WTFFF', '2023-08-30 14:30:02', 'ouvert', NULL, 1, 2, 'Nan mais oHHHHHHH'),
-	(3, 'Le bon gamin outsider ?', '2023-08-30 16:48:37', 'ouvert', NULL, 2, 1, 'Il est outsider pour vous?');
+-- Listage des données de la table forum.topic : ~0 rows (environ)
+INSERT INTO `topic` (`id_topic`, `title`, `creationdate`, `closed`, `likes`, `categorie_id`, `user_id`, `description`) VALUES
+	(1, 'Qui sera le futur BO?', '2023-08-30 08:47:05', 'ouvert', 5, 1, 1, 'Qui va gagner le Ballon d\'or a votre avis ??'),
+	(2, 'Ronaldo WTFFF', '2023-08-30 14:30:02', 'ouvert', 81, 1, 2, 'Nan mais oHHHHHHH'),
+	(3, 'Le bon gamin outsider ?', '2023-08-30 16:48:37', 'ouvert', 10, 2, 1, 'Il est outsider pour vous?');
 
 -- Listage de la structure de table forum. user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -86,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table forum.user : ~2 rows (environ)
-INSERT IGNORE INTO `user` (`id_user`, `pseudo`, `mot_de_passe`, `DateInscription`, `role`, `email`, `picture`) VALUES
+INSERT INTO `user` (`id_user`, `pseudo`, `mot_de_passe`, `DateInscription`, `role`, `email`, `picture`) VALUES
 	(1, 'admin', 'admin', '2023-08-30 08:43:15', 'admin', 'admin@admin.com', 'hack.png'),
 	(2, 'User1', '123', '2023-08-30 08:45:24', 'verifier', 'user1@gmail.com', 'macdo.jpeg');
 

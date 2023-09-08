@@ -184,18 +184,20 @@ main {
     display: flex;
     flex-direction: column;
     text-align: center;
-    border: 4px solid;
-    border-image: linear-gradient(350deg,  #883ba3, #735bf3);
-    animation: Gradient 6s ease infinite;
-    border-image-slice: 1;
+    border: 4px solid transparent;
+    background-image: linear-gradient(white,white), linear-gradient(350deg,  #883ba3, #735bf3);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    animation: Gradient 6s ease infinite;;
     width: 90%;
     min-height: 100%;
-    padding-top: 2%;
+    border-radius: 10px 0px 0px 10px;
 }
 
+
 .topic-auteur img{
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
     border-radius: 100px;
 }
 
@@ -215,6 +217,9 @@ main {
     width: 98%;
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .topic-like-post-figure {
@@ -370,6 +375,26 @@ main {
     .categorie-auteur{
         margin-top: 5%;
     }
+    .topic-auteur img{
+        width: 100px;
+        height: 100px;
+    }
+    .container-topic{
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+    .topic-auteur{
+        width: 100%;
+        border-radius: 10px 10px 0px 0px;
+    }
+    .topic-detail{
+        width: 100%;
+    }
+
+    .topic-like-post-figure a {
+        margin-left: 10px;
+    }
 }
 @media screen and (min-width: 701px)and (max-width: 1080px){
     .nav {
@@ -400,6 +425,10 @@ main {
 
     .categorie-auteur{
         margin-top: 0;
+    }
+    .topic-auteur img{
+        width: 150px;
+        height: 150px;
     }
 
 }

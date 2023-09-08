@@ -14,7 +14,7 @@ $categories = $result["data"]['categories'];
 <?php
 foreach($categories as $categorie){
     ?>
-    <a class="categorie-lien" href="index.php?ctrl=forum&action=listTopics&id="<?=$categorie->getId()?>>
+    <a class="categorie-lien" href="index.php?ctrl=forum&action=listTopics&id=<?=$categorie->getId()?>">
         <div class="categorie">
             <figure class="categorie-img">
                 <img class="categorie-img" src="<?=$categorie->getPicture()?>" alt="<?=$categorie->getLibelle()?>">

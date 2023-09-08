@@ -13,6 +13,7 @@
         private $jaime;
         private $description;
         private $categorie_id;
+        private $likes;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -163,6 +164,26 @@
         public function setClosed($closed)
         {
                 $this->closed = $closed;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of likes
+         */ 
+        public function getLikes()
+        {
+                return $this->likes;
+        }
+
+        /**
+         * Set the value of likes
+         *
+         * @return  self
+         */ 
+        public function setLikes($likes)
+        {
+                $this->likes = $likes;
 
                 return $this;
         }
