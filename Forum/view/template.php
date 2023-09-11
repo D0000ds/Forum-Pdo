@@ -17,14 +17,14 @@
                 </figure>
                 <ul class="ul">
                     <div class="hoverNav"><li><a href="index.php?ctrl=forum&action=listCategorie">Catégorie</a></li></div>
-                    <div class="hoverNav"><li><a href="index.php?ctrl=forum&action=index">Dernier Topics</a></li></div>
-                    <div class="hoverNav"><li><a href="">Dernier Messages</a></li></div>
+                    <div class="hoverNav"><li><a href="index.php?ctrl=forum&action=lastTopics">Dernier Topics</a></li></div>
+                    <div class="hoverNav"><li><a href="index.php?ctrl=forum&action=lastMessages">Dernier Messages</a></li></div>
                     <div class="hoverNav"><li><a href="index.php?ctrl=home&action=reglement">Règlement</a></li></div>
                 </ul>
                 <div class="inscription_connexion">
-                    <a class="hoverNav" href="">Inscription</a>
+                    <a class="hoverNav" href="index.php?ctrl=security&action=register">Inscription</a>
                     <span class="speration">/</span>
-                    <a class="hoverNav" href="">Connexion</a>
+                    <a class="hoverNav" href="index.php?ctrl=security&action=login">Connexion</a>
                 </div>
                 <div class="burger">
                     <span></span>

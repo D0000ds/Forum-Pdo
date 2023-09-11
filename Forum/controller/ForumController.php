@@ -13,7 +13,7 @@
     
     class ForumController extends AbstractController implements ControllerInterface{
 
-        public function index(){
+        public function lastTopics(){
           
 
            $topicManager = new TopicManager();
@@ -25,6 +25,18 @@
                 ]
             ];
         
+        }
+
+        public function lastMessages(){
+            
+            $messageManager = new MessageManager();
+
+            return [
+                "view" => VIEW_DIR."forum/listLastedMassages.php",
+                "data" => [
+                    "messages" => $messageManager->findAll(["datePublication", "DESC"])
+                ]
+            ];
         }
 
         public function listCategorie()
@@ -65,7 +77,8 @@
                 "data" => [
                     "topic" => $topicManager->detailTopic($id),
                     "messages" => $messagesManager->AllMsg($id),
-                    "likes" => $topicManager->like($id)
+                    "likes" => $topicManager->like($id),
+                    "likeM" =>  $messagesManager->likes($id)
                 ]
             ];
         }
@@ -73,11 +86,17 @@
         public function detailUser($id){
 
             $userManager = new UserManager();
+            $topicManager = new TopicManager();
+            $messageManager = new MessageManager();
 
             return [
                 "view" => VIEW_DIR."forum/detailUser.php",
                 "data" => [
-                    "user" => $userManager->detailUser($id)
+                    "user" => $userManager->detailUser($id),
+                    "topics" => $topicManager->allTopicsByUser($id),
+                    "messages" => $messageManager->AllMsgByUser($id),
+                    "nbMessage" => $userManager->nbMsgUser($id),
+                    "nbTopic" => $userManager->nbTopicUser($id)
                 ]
             ];
         }

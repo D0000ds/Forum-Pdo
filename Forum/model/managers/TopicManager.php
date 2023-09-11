@@ -55,4 +55,16 @@
                 die();
             }
         }
+
+        public function allTopicsByUser($id){
+            $sql = "SELECT *
+                FROM ".$this->tableName." a
+                WHERE a.user_id = ".$id."
+                ";
+
+            return $this->getMultipleResults(
+                DAO::select($sql), 
+                $this->className
+                );
+        }
     }

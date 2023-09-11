@@ -9,6 +9,7 @@ namespace Model\Entities;
         private $libelle;
         private $picture;
         private $description;
+        
 
         public function __construct($data){         
             $this->hydrate($data);        

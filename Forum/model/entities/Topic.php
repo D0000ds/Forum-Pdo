@@ -187,4 +187,8 @@
 
                 return $this;
         }
+
+        public function __toString(){
+                return "test Topic";
+        }
     }

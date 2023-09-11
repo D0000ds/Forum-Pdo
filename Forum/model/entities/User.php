@@ -12,6 +12,8 @@
         private $role;
         private $email;
         private $picture;
+        private $nbTopic;
+        private $nbMessage;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -155,6 +157,46 @@
                 return "./public/img/".$this;
         }
 
+
+        /**
+         * Get the value of nbTopic
+         */ 
+        public function getNbTopic()
+        {
+                return $this->nbTopic;
+        }
+
+        /**
+         * Set the value of nbTopic
+         *
+         * @return  self
+         */ 
+        public function setNbTopic($nbTopic)
+        {
+                $this->nbTopic = $nbTopic;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of nbMessage
+         */ 
+        public function getNbMessage()
+        {
+                return $this->nbMessage;
+        }
+
+        /**
+         * Set the value of nbMessage
+         *
+         * @return  self
+         */ 
+        public function setNbMessage($nbMessage)
+        {
+                $this->nbMessage = $nbMessage;
+
+                return $this;
+        }
 
         public function __toString(){
             return $this->getPseudo();

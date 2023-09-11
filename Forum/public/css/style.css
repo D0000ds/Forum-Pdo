@@ -30,6 +30,7 @@
 footer {
     position: absolute;
     bottom: 0;
+    margin-top: 3%;
 }
 .nav a {
     text-decoration: none;
@@ -195,7 +196,7 @@ main {
 }
 
 
-.topic-auteur img{
+.imgTopicAuteur{
     width: 175px;
     height: 175px;
     border-radius: 100px;
@@ -236,6 +237,96 @@ main {
     padding: 5px;
     border-radius: 5px;
     margin-right: 5px;
+}
+
+.container-detailTopic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.picture-profile-card {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 2%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.container-InfoUser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    margin-top: 3%;
+}
+
+.card-stats{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.card-stats-title{
+    background: linear-gradient(350deg, #883ba3, #735bf3);
+    animation: Gradient 6s ease infinite;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+    text-shadow: 2px 2px 9px rgba(0,0,0,0.73);
+    text-align: center;
+}
+
+.info-user {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.container-DetailUser{
+    display: flex;
+    width: 90%;
+}
+
+.container-all-topics-user{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-form-inscription{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-incription{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.form-inscription-input{
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 35px;
+    font-size: 20px;
+}
+
+.form-inscription-submit {
+    text-align: center;
+    border-radius: 20px;
+    height: 35px;
+    font-size: 20px;
 }
 
 @keyframes Gradient {
@@ -375,7 +466,7 @@ main {
     .categorie-auteur{
         margin-top: 5%;
     }
-    .topic-auteur img{
+    .imgTopicAuteur{
         width: 100px;
         height: 100px;
     }
@@ -394,6 +485,14 @@ main {
 
     .topic-like-post-figure a {
         margin-left: 10px;
+    }
+
+    .container-DetailUser {
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-InfoUser {
+        width: 60%;
     }
 }
 @media screen and (min-width: 701px)and (max-width: 1080px){
@@ -426,9 +525,18 @@ main {
     .categorie-auteur{
         margin-top: 0;
     }
-    .topic-auteur img{
+    .imgTopicAuteur{
         width: 150px;
         height: 150px;
+    }
+
+    .container-DetailUser {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-InfoUser {
+        width: 60%;
     }
 
 }
