@@ -7,7 +7,7 @@
 
         private $id;
         private $pseudo;
-        private $mot_de_passe;
+        private $password;
         private $DateInscription;
         private $role;
         private $email;
@@ -60,11 +60,11 @@
         }
 
         /**
-         * Get the value of mot_de_passe
+         * Get the value of password
          */ 
-        public function getMot_de_passe()
+        public function getPassword()
         {
-                return $this->mot_de_passe;
+                return $this->password;
         }
 
         /**
@@ -72,9 +72,9 @@
          *
          * @return  self
          */ 
-        public function setMot_de_passe($mot_de_passe)
+        public function setPassword($password)
         {
-                $this->mot_de_passe = $mot_de_passe;
+                $this->password = $password;
                 return $this;
         }
 

@@ -60,4 +60,15 @@
                 $this->className
             );
         }
+
+        public function verifPseudo($pseudo){
+            $sql = "SELECT * 
+            FROM ".$this->tableName." a
+            WHERE pseudo = :pseudo";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['pseudo' => $pseudo], false), 
+                $this->className
+            );
+        }
     }
