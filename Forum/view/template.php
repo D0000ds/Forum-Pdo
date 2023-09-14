@@ -21,29 +21,11 @@
                     <div class="hoverNav"><li><a href="index.php?ctrl=forum&action=lastMessages">Dernier Messages</a></li></div>
                     <div class="hoverNav"><li><a href="index.php?ctrl=home&action=reglement">Règlement</a></li></div>
                 </ul>
-                <?php
-                if(isset($_SESSION["user"])){ ?>
-                    <div class="inscription_connexion">
-                        <button><?= $_SESSION["user"]->getPseudo()?></button>
-                        <div class="panel">
-                            <ul>
-                                <a href=""><li>Profile</li></a>
-                                <?php if($_SESSION["user"]->getRole() == "admin"){  echo"<a href=''><li>Pannel Admin</li></a>"; }?>
-                                <a href=""><li>Déconnexion</li></a>
-                            </ul>
-                        </div>
-                        <figure class="figure-profile-picture">
-                            <img src="<?= $_SESSION["user"]->getPicture()?>" alt="picture of <?= $_SESSION["user"]->getPseudo()?>" class="profile-picture">
-                        </figure>
-                    </div>
-        <?php   } else { ?>
-                    <div class="inscription_connexion">
-                        <a class="hoverNav" href="index.php?ctrl=security&action=register">Inscription</a>
-                        <span class="speration">/</span>
-                        <a class="hoverNav" href="index.php?ctrl=security&action=login">Connexion</a>
-                    </div>
-            <?php }
-                ?>
+                <div class="inscription_connexion">
+                    <a class="hoverNav" href="index.php?ctrl=security&action=register">Inscription</a>
+                    <span class="speration">/</span>
+                    <a class="hoverNav" href="index.php?ctrl=security&action=login">Connexion</a>
+                </div>
                 <div class="burger">
                     <span></span>
                 </div>

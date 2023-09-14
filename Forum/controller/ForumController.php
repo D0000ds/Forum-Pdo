@@ -100,4 +100,28 @@
                 ]
             ];
         }
+
+        public function deleteListCategorie(){
+            $categoriecManager = new CategorieManager();
+
+            return [
+                "view" => VIEW_DIR."forum/deleteListCategorie.php"
+            ];
+        }
+
+        public function modifyListCategorie(){
+            $categoriecManager = new CategorieManager();
+
+            return [
+                "view" => VIEW_DIR."forum/modifyListCategorie.php"
+            ];
+        }
+
+        public function addListCategorie(){
+            $categoriecManager = new CategorieManager();
+
+            return [
+                "view" => VIEW_DIR."forum/addListCategorie.php"
+            ];
+        }
     }
