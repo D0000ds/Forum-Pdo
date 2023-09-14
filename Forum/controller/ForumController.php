@@ -101,27 +101,126 @@
             ];
         }
 
-        public function deleteListCategorie(){
-            $categoriecManager = new CategorieManager();
+        public function deleteTopic($id){
+            $topicManager = new TopicManager();
+            $messageManager = new MessageManager();
+
 
             return [
-                "view" => VIEW_DIR."forum/deleteListCategorie.php"
+                "view" => VIEW_DIR."home.php",
+                "deleteTopic " => $topicManager->delete($id),
+                "deleteMessage" => $messageManager->deleteMsg($id)
             ];
         }
 
-        public function modifyListCategorie(){
-            $categoriecManager = new CategorieManager();
+        public function addMessage($id){
+            $topicManager = new TopicManager();
+            $messageManager = new MessageManager();
 
             return [
-                "view" => VIEW_DIR."forum/modifyListCategorie.php"
+                "view" => VIEW_DIR."forum/addMessage.php",
+                "data" => [
+                    "topic" => $topicManager->detailTopic($id)
+                ]
             ];
         }
 
-        public function addListCategorie(){
-            $categoriecManager = new CategorieManager();
+        public function postMessage($id){
+            $messageManager = new MessageManager();
+
+            $message = filter_input(INPUT_POST, "textMessage", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNow = date('Y-m-d h:i:s', time());
+            $session = new Session();
+         
+            $data = ['texte' => $message, 'datePublication' => $dateNow, 'likes' => 0, 'topic_id' => $id, 'user_id' => $session->getUser()->getId()];
+            $messageManager->add($data);
+
+            $this->redirectTo("Forum", "index.php?ctrl=forum&action=detailTopic&id=".$id); exit;
+        }
+
+        public function editTopic($id){
+            $topicManager = new TopicManager();
 
             return [
-                "view" => VIEW_DIR."forum/addListCategorie.php"
+                "view" => VIEW_DIR."forum/editTopic.php",
+                "data" => [
+                    "topic" => $topicManager->detailTopic($id)
+                ]
             ];
+        }
+
+        public function postEdit($id){
+            $topicManager = new TopicManager();
+
+            $title = filter_input(INPUT_POST, "titleEdit", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $description = filter_input(INPUT_POST, "descEdit", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+
+            $topicManager->editTopic($id, $title, $description);
+            $this->redirectTo("Forum", "index.php?ctrl=forum&action=detailTopic&id=".$id); exit;
+        }
+
+
+        public function deleteMessage($id){
+            $messageManager = new MessageManager();
+
+
+            return [
+                "view" => VIEW_DIR."home.php",
+                "deleteMessage" => $messageManager->delete($id)
+            ];
+        }
+
+        public function editMessage($id){
+            $messageManager = new MessageManager();
+
+            return [
+                "view" => VIEW_DIR."forum/editMessage.php",
+                "data" => [
+                    "message" => $messageManager->findOneById($id)
+                ]
+            ];
+        }
+
+        public function messageEdit($id){
+            $messageManager = new MessageManager();
+
+            $message = filter_input(INPUT_POST, "msgEdit", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $messageManager->edit($id, $message);
+            $this->redirectTo("Forum", "index.php?ctrl=forum&action=listCategorie"); exit;
+
+        }
+
+        public function deleteCategorie($id){
+            $categorieManager = new CategorieManager();
+
+            return [
+                "view" => VIEW_DIR."home.php",
+                "deleteMessage" => $categorieManager->delete($id),
+            ];
+        }
+
+        public function editCategorie($id){
+            $categorieManager = new CategorieManager();
+
+            return [
+                "view" => VIEW_DIR."forum/editCategorie.php",
+                "data" => [
+                    "categorie" => $categorieManager->findOneById($id)
+                ]
+            ];
+        }
+
+        public function postCategorie($id){
+            $categorieManager = new CategorieManager();
+
+            $libelle = filter_input(INPUT_POST, "libelleEdit", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $desc = filter_input(INPUT_POST, "descEdit", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $file = filter_input(INPUT_POST, "pictureEdit", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $categorieManager->edit($id, $libelle, $file,$desc);
+
+            $this->redirectTo("Forum", "index.php?ctrl=forum&action=listCategorie"); exit;
         }
     }

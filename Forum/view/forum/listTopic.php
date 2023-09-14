@@ -33,10 +33,29 @@ if($topics !== NULL){
         </a>
         <?php
     }
-    ?>
+    if(App\Session::getUser()){
+        ?><div class="container-img-listCategorie">
+        <?php if(App\Session::isAdmin()){?>
+                <a href="index.php?ctrl=forum&action=deleteCategorie&id=<?=$categorie->getId()?>">
+                    <figure class="figure-img-listCategorie" style="background-color: #e4717a;">
+                        <img src="./public/img/delete.png" alt="delete">
+                    </figure>
+                </a>
+                <a href="index.php?ctrl=forum&action=editCategorie&id=<?=$categorie->getId()?>">
+                    <figure class="figure-img-listCategorie" style="background-color: #735bf3;">
+                        <img src="./public/img/edit.png" alt="modify">
+                    </figure>
+                </a>
+    <?php } ?>
+                <a href="index.php?ctrl=forum&action=addListCategorie">
+                    <figure class="figure-img-listCategorie" style="background-color: #75da7e;">
+                        <img src="./public/img/more.png" alt="add">
+                    </figure>
+                </a>
+            </div>
         </div>
     </div>
-    <?php
+<?php } 
 } else {
     ?>
     <h2>Il n'y a aucun topic dans cette catégorie...</h2>

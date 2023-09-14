@@ -21,7 +21,8 @@
                     $passwordHash = $verif->getPassword();
 
                     if(password_verify($password, $passwordHash)){
-                        $_SESSION["user"] = $verif;
+                        $session = new Session();
+                        $session->setUser($verif);
                         $this->redirectTo("Forum", "index.php?ctrl=home&action=index"); exit;
                     } else {
                         ?><span class="message-verif">Pseudo ou Mot de passe incorrect</span><?php

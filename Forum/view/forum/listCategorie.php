@@ -33,26 +33,6 @@ foreach($categories as $categorie){
     </a>
     <?php
 }
-if($_SESSION['user']->getRole() == "admin"){?>
-    <div class="container-img-listCategorie">
-        <a href="index.php?ctrl=forum&action=deleteListCategorie">
-            <figure class="figure-img-listCategorie" style="background-color: #e4717a;">
-                <img src="./public/img/delete.png" alt="delete">
-            </figure>
-        </a>
-        <a href="index.php?ctrl=forum&action=modifyListCategorie">
-            <figure class="figure-img-listCategorie" style="background-color: #735bf3;">
-                <img src="./public/img/edit.png" alt="modify">
-            </figure>
-        </a>
-        <a href="index.php?ctrl=forum&action=addListCategorie">
-            <figure class="figure-img-listCategorie" style="background-color: #75da7e;">
-                <img src="./public/img/more.png" alt="add">
-            </figure>
-        </a>
-    </div>
-<?php 
-} 
 ?>
     </div>
 </div>

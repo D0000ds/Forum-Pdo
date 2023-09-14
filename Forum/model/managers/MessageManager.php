@@ -56,4 +56,27 @@
                 );
         }
 
+        public function deleteMsg($id){
+            $sql = "DELETE FROM ".$this->tableName."
+                    WHERE topic_id = :id
+                    ";
+
+            return DAO::delete($sql, ['id' => $id]); 
+        }
+
+        public function edit($id, $message){
+            $sql = "UPDATE ".$this->tableName." 
+            SET texte = '".$message."'
+            WHERE id_messages = :id;
+            ";
+
+            try{
+                return DAO::update($sql, ['id' => $id]);
+            }
+            catch(\PDOException $e){
+                echo $e->getMessage();
+                die();
+            }
+        }
+
     }

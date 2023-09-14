@@ -67,4 +67,18 @@
                 $this->className
                 );
         }
+
+        public function editTopic($id, $title, $description){
+            $sql = "UPDATE ".$this->tableName." 
+            SET title = '".$title."', description = '".$description."'
+            WHERE id_topic = :id;";
+
+            try{
+                return DAO::update($sql, ['id' => $id]);
+            }
+            catch(\PDOException $e){
+                echo $e->getMessage();
+                die();
+            }
+        }
     }

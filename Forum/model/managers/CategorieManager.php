@@ -15,4 +15,18 @@
             parent::connect();
         }
 
+
+        public function edit($id, $libelle, $file,$desc){
+            $sql = "UPDATE ".$this->tableName." 
+            SET libelle = '".$libelle."', picture = '".$file."', description = '".$desc."'
+            WHERE id_categorie = :id;";
+
+            try{
+                return DAO::update($sql, ['id' => $id]);
+            }
+            catch(\PDOException $e){
+                echo $e->getMessage();
+                die();
+            }
+        }
     }
