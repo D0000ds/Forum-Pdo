@@ -9,7 +9,7 @@ namespace Model\Entities;
         private $libelle;
         private $picture;
         private $description;
-        private $nbTopic;
+        private $nbTopicC;
         
 
         public function __construct($data){         
@@ -99,9 +99,9 @@ namespace Model\Entities;
         /**
          * Get the value of nbTopic
          */ 
-        public function getNbTopic()
+        public function getNbTopicC()
         {
-                return $this->nbTopic;
+                return $this->nbTopicC;
         }
 
         /**
@@ -109,9 +109,9 @@ namespace Model\Entities;
          *
          * @return  self
          */ 
-        public function setNbTopic($nbTopic)
+        public function setNbTopicC($nbTopicC)
         {
-                $this->nbTopic = $nbTopic;
+                $this->nbTopicC = $nbTopicC;
 
                 return $this;
         }

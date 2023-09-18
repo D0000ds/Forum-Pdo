@@ -1,9 +1,8 @@
 <?php
 
 $categories = $result["data"]['categories'];
-$nbTopic = $result["data"]['nbTopic'];
 
-var_dump($nbTopic);
+
 ?>
 
 <div class="container-home">
@@ -27,7 +26,7 @@ foreach($categories as $categorie){
             <div class="categorie-nb-topics">
                 <div class="categorie-span">
                     <span>Nombre de Topics</span><br>
-                    <span>0</span>
+                    <span><?php echo $categorie->getNbTopicC(); ?></span>
                 </div>
             </div>
         </div>

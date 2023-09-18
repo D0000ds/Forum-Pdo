@@ -47,8 +47,7 @@
            return [
                "view" => VIEW_DIR."forum/listCategorie.php",
                "data" => [
-                   "categories" => $categoriecManager->findAll(["libelle", "ASC"]),
-                   "nbTopic" => $categoriecManager->nbTopic()
+                   "categories" => $categoriecManager->nbTopicCategorie(),
                ]
            ];
         }
@@ -106,12 +105,12 @@
             $topicManager = new TopicManager();
             $messageManager = new MessageManager();
 
+            $id_redirected = $topicManager->detailTopic($id)->getCategorie()->getId();
 
-            return [
-                "view" => VIEW_DIR."home.php",
-                "deleteTopic " => $topicManager->delete($id),
-                "deleteMessage" => $messageManager->deleteMsg($id)
-            ];
+            $topicManager->delete($id);
+            $messageManager->deleteMsg($id);
+        
+            $this->redirectTo("Forum", "index.php?ctrl=forum&action=listTopics&id=".$id_redirected); exit;
         }
 
         public function addMessage($id){
@@ -165,11 +164,11 @@
         public function deleteMessage($id){
             $messageManager = new MessageManager();
 
-
-            return [
-                "view" => VIEW_DIR."home.php",
-                "deleteMessage" => $messageManager->delete($id)
-            ];
+            $id_redirected = $messageManager->findOneById($id)->getTopic()->getId();
+            
+           
+            $messageManager->delete($id);
+            $this->redirectTo("Forum", "index.php?ctrl=forum&action=detailTopic&id=".$id_redirected); exit;
         }
 
         public function editMessage($id){
@@ -197,7 +196,7 @@
             $categorieManager = new CategorieManager();
 
             return [
-                "view" => VIEW_DIR."home.php",
+                "view" => VIEW_DIR."forum/listCategorie.php",
                 "deleteMessage" => $categorieManager->delete($id),
             ];
         }

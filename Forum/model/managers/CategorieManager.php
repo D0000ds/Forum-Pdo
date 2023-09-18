@@ -30,9 +30,9 @@
             }
         }
 
-        public function nbTopic()
+        public function nbTopicCategorie()
         {
-            $sql = "SELECT a.id_categorie, a.libelle, a.picture, a.description, COUNT(*) as nbTopic
+            $sql = "SELECT a.id_categorie, a.libelle, a.picture, a.description, COUNT(t.id_topic) as nbTopicC
                 FROM ".$this->tableName." a
                 INNER JOIN topic t
                 ON t.categorie_id = a.id_categorie
